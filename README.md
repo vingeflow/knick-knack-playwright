@@ -23,11 +23,7 @@ cd knick-knack-playwright
 ```bash
 npm install
 ```
-4. Install TypeScript globally:
-```bash
-npm install -g typescript
-```
-5. Initialize Playwright:
+4. Initialize Playwright:
 ```bash
 npx playwright install
 ```
