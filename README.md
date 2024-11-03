@@ -1,4 +1,4 @@
-# Knick Knack test automation
+# Knick Knack Test Automation
 
 ## About This Project
 
