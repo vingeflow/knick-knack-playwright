@@ -8,7 +8,8 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "env": "./switch-env.sh"
   },
   "keywords": [],
   "author": "",
