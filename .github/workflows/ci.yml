@@ -24,7 +24,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Switch environment
-        run: npm run env --staging
+        run: npm run env -- staging
 
       - name: Run tests
         env:
