@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import prettierPlugin from 'eslint-plugin-prettier'
 
 export default [
