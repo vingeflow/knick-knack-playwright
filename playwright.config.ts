@@ -3,8 +3,13 @@ import { stagingUsername, stagingPassword } from './src/config/config'
 
 export default defineConfig({
   testDir: './src/tests',
-  timeout: 30000,
+  timeout: 5000,
   retries: 1,
+  maxFailures: 1,
+  reporter: [
+    ['json', { outputFile: 'playwright-report.json' }],
+    ['html', { outputFile: 'playwright-report-.html' }],
+  ],
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },
