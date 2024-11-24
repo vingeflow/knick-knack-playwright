@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: staging
 
     steps:
       - name: Checkout repository
@@ -26,14 +27,25 @@ jobs:
       - name: Switch environment
         run: npm run env -- staging
 
+      - name: Debug secrets
+        run: |
+          if [ -z "${{ secrets.STAGING_USERNAME }}" ]; then
+            echo "STAGING_USERNAME is empty or not set."
+          else
+            echo "STAGING_USERNAME is set."
+          fi
+
+          if [ -z "${{ secrets.STAGING_PASSWORD }}" ]; then
+            echo "STAGING_PASSWORD is empty or not set."
+          else
+            echo "STAGING_PASSWORD is set."
+          fi
+
       - name: Run tests
         env:
           STAGING_USERNAME: ${{ secrets.STAGING_USERNAME }}
           STAGING_PASSWORD: ${{ secrets.STAGING_PASSWORD }}
-        run: |
-          echo "STAGING_USERNAME=${{ secrets.STAGING_USERNAME }}"
-          echo "STAGING_PASSWORD=${{ secrets.STAGING_PASSWORD }}"
-          npx playwright test
+        run: npx playwright test
 
       - name: Upload Playwright Test Report
         if: failure()
