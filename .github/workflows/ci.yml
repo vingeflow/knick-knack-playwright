@@ -27,20 +27,6 @@ jobs:
       - name: Switch environment
         run: npm run env -- staging
 
-      - name: Debug secrets
-        run: |
-          if [ -z "${{ secrets.STAGING_USERNAME }}" ]; then
-            echo "STAGING_USERNAME is empty or not set."
-          else
-            echo "STAGING_USERNAME is set."
-          fi
-
-          if [ -z "${{ secrets.STAGING_PASSWORD }}" ]; then
-            echo "STAGING_PASSWORD is empty or not set."
-          else
-            echo "STAGING_PASSWORD is set."
-          fi
-
       - name: Run tests
         env:
           STAGING_USERNAME: ${{ secrets.STAGING_USERNAME }}
