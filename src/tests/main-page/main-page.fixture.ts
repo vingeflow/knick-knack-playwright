@@ -10,5 +10,3 @@ export const test = baseTest.extend<{
     await use(mainPage)
   },
 })
-
-export const expect = test.expect

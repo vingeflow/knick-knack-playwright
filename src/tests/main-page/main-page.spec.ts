@@ -1,16 +1,14 @@
-import { urlMatchers } from '../../pages/url-matchers'
-import { test, expect } from './main-page.fixture'
+import { urlMatchers } from '../../constants/routes'
+import { test } from './main-page.fixture'
 
 test.describe('Main page tests', () => {
-  test('should navigate to Polymer Clay category', async ({ mainPage }) => {
+  test('Should navigate to Polymer Clay category', async ({ mainPage }) => {
     await mainPage.clickButton(mainPage.polymerCategory)
-    await expect(mainPage.page).toHaveURL(
-      urlMatchers.productCategory.polymerClay
-    )
+    await mainPage.expect(mainPage.page).toHaveURL(urlMatchers.polymerClay)
   })
 
-  test('should navigate to Silver category', async ({ mainPage }) => {
+  test('Should navigate to Silver category', async ({ mainPage }) => {
     await mainPage.clickButton(mainPage.silverCategory)
-    await expect(mainPage.page).toHaveURL(urlMatchers.productCategory.silver)
+    await mainPage.expect(mainPage.page).toHaveURL(urlMatchers.silver)
   })
 })
