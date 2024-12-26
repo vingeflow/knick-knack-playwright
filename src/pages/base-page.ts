@@ -1,4 +1,4 @@
-import { Locator, Page, test } from '@playwright/test'
+import { Locator, Page, test, expect } from '@playwright/test'
 
 export abstract class BasePage {
   public page: Page
@@ -18,5 +18,9 @@ export abstract class BasePage {
     await test.step(`Click button: ${element}`, async () => {
       await element.click()
     })
+  }
+
+  public get expect() {
+    return expect
   }
 }
