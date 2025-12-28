@@ -13,6 +13,13 @@ export class CheckOutPage extends BasePage {
   readonly cityInput = this.page.locator('#billing_city')
   readonly phoneInput = this.page.locator('#billing_phone')
   readonly emailInput = this.page.locator('#billing_email')
+  readonly countryDropdown = this.page.locator('.select2-selection--single')
+  readonly countryEstoniaOption = this.page.locator(
+    '.select2-results__option',
+    {
+      hasText: 'Estonia',
+    }
+  )
   readonly pickUpDropdown = this.page.locator('.choices')
   readonly pickUpOption = this.page.locator('.choices__item--choice', {
     hasText: 'Kakumäe Selveri',
@@ -30,6 +37,8 @@ export class CheckOutPage extends BasePage {
   async fillEstoniaBillingData() {
     await this.firstNameInput.fill(faker.person.firstName())
     await this.lastNameInput.fill(faker.person.lastName())
+    await this.clickButton(this.countryDropdown)
+    await this.clickButton(this.countryEstoniaOption)
     await this.streetInput.fill(faker.location.street())
     await this.postCodeInput.fill(faker.location.zipCode('#####'))
     await this.cityInput.fill(faker.location.city())
