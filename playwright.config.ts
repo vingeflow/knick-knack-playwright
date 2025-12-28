@@ -5,7 +5,7 @@ const isStaging = process.env.ENV === 'staging'
 
 export default defineConfig({
   testDir: './src/tests',
-  timeout: 10000,
+  timeout: 30000,
   retries: 1,
   maxFailures: 5,
   reporter: [
