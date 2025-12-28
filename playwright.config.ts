@@ -44,7 +44,7 @@ export default defineConfig({
       use: {
         ...devices['iPhone 14'],
       },
-      grepInvert: /@desktop/,
+      grepInvert: /@desktop|@notForIOS/,
     },
   ],
 })
