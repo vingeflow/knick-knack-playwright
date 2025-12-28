@@ -26,12 +26,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Switch environment
-        run: npm run env -- staging
+        run: npm run env -- prod
 
       - name: Run tests
-        env:
-          STAGING_USERNAME: ${{ secrets.STAGING_USERNAME }}
-          STAGING_PASSWORD: ${{ secrets.STAGING_PASSWORD }}
         run: npx playwright test
 
       - name: Upload Playwright Test Report

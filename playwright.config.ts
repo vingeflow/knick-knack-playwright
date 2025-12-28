@@ -1,6 +1,8 @@
 import { defineConfig, devices } from '@playwright/test'
 import { stagingUsername, stagingPassword } from './src/config/config'
 
+const isStaging = process.env.ENV === 'staging'
+
 export default defineConfig({
   testDir: './src/tests',
   timeout: 10000,
@@ -15,24 +17,34 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    extraHTTPHeaders: {
-      Authorization:
-        'Basic ' +
-        Buffer.from(`${stagingUsername}:${stagingPassword}`).toString('base64'),
-    },
+    ...(isStaging && {
+      extraHTTPHeaders: {
+        Authorization:
+          'Basic ' +
+          Buffer.from(`${stagingUsername}:${stagingPassword}`).toString(
+            'base64'
+          ),
+      },
+    }),
   },
   projects: [
     {
-      name: 'chromium',
+      name: 'Chromium',
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'Mobile Android',
+      use: {
+        ...devices['Pixel 7'],
+      },
+      grepInvert: /@desktop/,
     },
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: 'Mobile iOS',
+      use: {
+        ...devices['iPhone 14'],
+      },
+      grepInvert: /@desktop/,
     },
   ],
 })

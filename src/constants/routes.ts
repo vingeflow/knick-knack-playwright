@@ -7,5 +7,7 @@ export const urlMatchers = {
 export const url = {
   strict: {
     aboutUs: '/about-us',
+    cart: '/cart',
+    checkOut: '/checkout',
   },
 }
